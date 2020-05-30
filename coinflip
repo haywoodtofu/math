@@ -1,0 +1,19 @@
+from random import randint
+result = []
+N = 10000
+for trial in range(0,N):
+    heads = 0
+    flips = 0
+    while heads < 6:
+        coin = randint(0,1) # if statements need to refer to the same coin
+        if coin == 1:
+            heads += 1
+            flips += 1
+        else:
+            heads = 0
+            flips += 1
+    #print(heads)
+    #print(flips)
+    result.append(flips)
+#print(result)
+print(sum(result)/N)
