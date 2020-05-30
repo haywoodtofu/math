@@ -1,0 +1,31 @@
+from random import randint
+
+## trials is how many times u wanna run the experiment
+## pulls in how many items u pull per run
+## type1 is the num of items that are type 1
+## type2 is the num of items that are type 2
+## res1 is how many of type 1 you want in end result
+## res2 is how many of type 2 you want in end result
+
+def marbles(trials, pulls, type1, type2, res1, res2):
+    success = 0
+    for i in range(trials):
+        cat1 = type1
+        cat2 = type2
+        pull1 = 0
+        pull2 = 0
+        for n in range(pulls):
+            c = randint(1, cat1 + cat2)
+            if c in range(1, cat1 + 1):
+                cat1 -= 1
+                pull1 += 1
+                #print('1')
+            else:
+                cat2 -= 1
+                pull2 += 1
+                #print('2')
+        #print(pull1, pull2, res1, res2)
+        if (pull1, pull2) == (res1, res2):
+            success += 1
+    print(success)
+    print(success/trials)
