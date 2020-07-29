@@ -1,0 +1,19 @@
+def determinant(matrix):
+    if len(matrix) == 0:
+        return None
+    if len(matrix) == 1:
+        return matrix[0][0]
+    res = 0
+    for i in range(len(matrix[0])):
+        remain = []
+        for y in range(1, len(matrix)):
+            row = []
+            xvals = list(range(0,i)) + list(range(i+1,len(matrix[0])))
+            for x in xvals:
+                #print(i,[y,x])
+                row.append(matrix[y][x])
+            #print(matrix[0][i],row)
+            remain.append(row)
+        # print(i, matrix[0][i], ((-1)**i), determinant(remain))
+        res += matrix[0][i]*((-1)**i)*determinant(remain)
+    return res
