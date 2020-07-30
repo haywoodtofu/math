@@ -1,0 +1,35 @@
+import random
+
+def plane(n):
+    seats = [0]*n
+    first_seat = random.randint(1,n)
+    seats[first_seat - 1] = 1
+    remaining = list(range(1,n+1)) # all available seats
+    remaining.remove(first_seat)
+    #print(seats)
+    #print(remaining)
+    for i in range(2, n + 1): # iterating through each person
+        if seats[i - 1] == 0: # if the seat is empty
+            seats[i - 1] = i
+            remaining.remove(i)
+            #print(remaining)
+        else:
+            random_seat = random.choice(remaining)
+            seats[random_seat - 1] = i
+            remaining.remove(random_seat)
+    #print(seats)
+    return seats
+plane(10)
+
+def correct_seat(person, total_seats, tests):
+    yes = 0
+    no = 0
+    for i in range(tests):
+        if plane(total_seats)[person - 1] == person:
+            yes += 1
+        no += 1
+    return yes/no
+
+
+# probability changes as you modify which passenger # you are
+print(correct_seat(100, 100, 1000))
