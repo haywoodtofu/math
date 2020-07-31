@@ -1,3 +1,6 @@
+# run an NxN matrix through determinant in order to find the determinant
+# solves the problem recursively by simplifying down to a 1x1 matrix and building back up
+
 def determinant(matrix):
     if len(matrix) == 0:
         return None
@@ -10,9 +13,9 @@ def determinant(matrix):
             row = []
             xvals = list(range(0,i)) + list(range(i+1,len(matrix[0])))
             for x in xvals:
-                #print(i,[y,x])
+                # print(i,[y,x])
                 row.append(matrix[y][x])
-            #print(matrix[0][i],row)
+            # print(matrix[0][i],row)
             remain.append(row)
         # print(i, matrix[0][i], ((-1)**i), determinant(remain))
         res += matrix[0][i]*((-1)**i)*determinant(remain)
